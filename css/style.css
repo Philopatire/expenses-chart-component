@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
+}
+:root {
+  --soft-red: hsl(10, 79%, 65%);
+  --soft-red-hover: hsla(10, 79%, 65%, 0.8);
+  --cyan: hsl(186, 34%, 60%);
+  --cyan-hover: hsla(186, 34%, 60%, 0.8);
+  --dark-brown: hsl(25, 47%, 15%);
+  --medium-brown: hsl(28, 10%, 53%);
+  --cream: hsl(27, 66%, 92%);
+  --very-pale-orange: hsl(33, 100%, 98%);
+  --main-gap: 30px;
+}
+body {
+  background-color: var(--cream);
+  padding: 10px;
+}
+.bold-weight {
+  font-weight: 700;
+}
+.muted-color {
+  color: var(--medium-brown);
+}
+.expenses-chart {
+  max-width: 450px;
+  margin: 100px auto;
+}
+.expenses-chart .balance {
+  border-radius: 15px;
+  background-color: var(--soft-red);
+  padding: 20px var(--main-gap);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.expenses-chart .balance .title {
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+.expenses-chart .balance .amount {
+  font-size: 1.7rem;
+  color: var(--very-pale-orange);
+}
+.expenses-chart .content {
+  padding: var(--main-gap);
+  background-color: var(--very-pale-orange);
+  border-radius: 15px;
+}
+.expenses-chart .content .title {
+  font-size: 1.7rem;
+  margin-bottom: 20px;
+  color: var(--dark-brown);
+}
+.expenses-chart .content .charts {
+  margin-bottom: 30px;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid var(--cream);
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 220px;
+}
+.expenses-chart .content .chart {
+  background-color: var(--soft-red);
+  border-radius: 5px;
+  width: 50px;
+  position: relative;
+  height: calc(100% - 30px);
+  transition: 0.5s;
+}
+.expenses-chart .content .chart:hover {
+  background-color: var(--soft-red-hover);
+}
+.expenses-chart .content .chart.today {
+  background-color: var(--cyan);
+}
+.expenses-chart .content .chart.today:hover {
+  background-color: var(--cyan-hover);
+}
+.expenses-chart .content .chart::before {
+  content: "$ " attr(data-price);
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--very-pale-orange);
+  background-color: var(--dark-brown);
+  text-align: center;
+  padding: 8px;
+  border-radius: 5px;
+  width: max-content;
+  opacity: 0;
+  transition: 0.5s;
+}
+.expenses-chart .content .chart:hover::before {
+  opacity: 1;
+}
+.expenses-chart .content .chart::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--medium-brown);
+}
+.expenses-chart .content .month-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.expenses-chart .content .month-balance {
+  font-size: 2.5rem;
+  color: var(--dark-brown);
+}
+.expenses-chart .content .prev-month-balance {
+  color: var(--dark-brown);
+  text-align: right;
+}
+.attribution {
+  background-color: #fff;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
